@@ -1,0 +1,19 @@
+{% extends 'produtos/base.html'%}
+
+{% block content %}
+
+	<form action="{% url 'produto_editar' produto.pk %}" method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<table>
+		{{ form.as_table }}
+		<tr>
+			<td>
+				<img class="img_prod" src="{{ form.instance.imagem.url }}">
+			</td>
+		</tr>
+		</table>
+		
+		<button class="btn btn-primary" type="submit">Editar</button>
+		<a class="btn btn-primary" href="{% url 'produto_index' %}">Voltar</a>
+	</form>
+{% endblock%}

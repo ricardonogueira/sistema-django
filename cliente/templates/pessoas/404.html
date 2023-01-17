@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Pessoa Não Encontrada
+{% endblock %}
+
+{% block content %}
+	<h1>Objeto Não Encontrado!</h1>
+	<p>Não foi possível encontrar pessoa</p>
+	<a href="{% url 'index' %}">Voltar</a>
+{% endblock %}

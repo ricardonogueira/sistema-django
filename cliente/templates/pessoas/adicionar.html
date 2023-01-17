@@ -1,0 +1,21 @@
+{% extends 'pessoas/base.html' %}
+{% load bootstrap5 %}
+
+{% block title %}
+	Pagina de Cadastro de Pessoas
+{% endblock %}
+
+{% block content %}
+<h1>Inserir Pessoas</h1>
+	<form action="{% url 'pessoa_adicionar' %}" method="post" class='form'>
+		{% csrf_token %}
+		{% bootstrap_form form %}
+		{% buttons %}
+			<button type='submit' class='btn btn-primary'>
+				Inserir
+			</button>
+			<a href="{% url 'pessoa_index' %}" class='btn btn-primary'>Voltar</a>
+		{% endbuttons %}
+	</form>
+	<p></p>
+{% endblock %}

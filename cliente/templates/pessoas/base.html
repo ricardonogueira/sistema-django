@@ -1,0 +1,22 @@
+{% load static %}
+{% load bootstrap5 %}
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>{% block title %}{% endblock %}</title>
+		{% bootstrap_css %}
+		<link rel="stylesheet"	href="{% static 'css/style.css' %}">
+	</head>
+	
+	<body>
+		<div class="container">
+			{% bootstrap_messages %}
+			{% block content %}
+			{% endblock %}
+		</div>
+		{% bootstrap_javascript %}
+		<script src="{% static 'js/script.js' %}"></script>
+	</body>
+</html>

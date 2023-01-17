@@ -1,0 +1,42 @@
+{% extends 'produtos/base.html' %}
+{% load thumbnail %}
+{% load static %}
+
+{% block content%}
+	<p>Lista de Produtos</p>
+	<p><a class="btn btn-primary" href="{% url 'produto_adicionar' %}">[+] Adicionar Produto</a></p>
+	{% if produtos %}
+		<table class="table table-light table-hover">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>Preço (R$)</th>
+					<th>Quantidade</th>
+					<th>Imagem</th>
+					<th colspan="2">Operações</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for produto in produtos %}
+				<tr>
+					<td>{{ produto.id }}</td>
+					<td>{{ produto.nome }}</td>
+					<td>{{ produto.preco }}</td>
+					<td>{{ produto.estoque }}</td>
+					<td>
+						{% thumbnail produto.imagem "100x100" as im %}
+							<img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+						{% endthumbnail %}
+					</td>
+					<td><a href="{% url 'produto_editar' produto.id %}"><img class="img_icon" src="{% static 'images/edit.png' %}"></a></td>
+					<td><a href="{% url 'produto_apagar' produto.id %}"><img class="img_icon" src="{% static 'images/delete.png' %}"></a></td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<p>Nenhum produto cadastrado!</p>
+	{% endif %}
+	</ul>
+{% endblock %}

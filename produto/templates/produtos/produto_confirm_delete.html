@@ -1,0 +1,10 @@
+{% extends 'produtos/base.html' %}
+
+{% block content %}
+	<form method="post">
+		{% csrf_token %}
+		<p>Deseja realmente remover o produto "{{ object }}"?</p>
+		<button class="btn btn-primary" type="submit">Confirmar</button>
+		<a class="btn btn-primary" href="{% url 'produto_index' %}">Voltar</a>
+	</form>
+{% endblock %}
